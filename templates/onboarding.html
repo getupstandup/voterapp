@@ -1,0 +1,124 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="container">
+    <h3 class="mt-5">A Letter to Congress... </h3>
+    <h4 class="mt-5">Listen Up Politicians,</h4>
+    <div style="font-size: 18px;" class="mb-4">
+      We think politicians should listen more and speak less!
+      <br><br>
+      We're tired of you doing whatever you want in Congress.  We the people are not cool with how you're running this country.
+      <br>
+      <br><strong>This country belongs to us and we are taking back control.</strong>
+      <br><br>
+      A wise man once said, "...that government of the people, by the people, for the people, shall not perish from the earth."
+      <br><br>
+      We agree with that dude. And this little 'app' is how we will set this country back on track once and for all.
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" id="id-sec-issue">
+  <div class="container">
+    <h3 class="mt-5 pt-4">What Can We Do To Turn Things Around</h3>
+    <h4 class="mt-5">{{ issue.title }}</h4>
+    <div class="mb-4 mt-3"> 
+    	{{ issue.description }} <br>
+    	<div class="mb-4 mt-3" style="font-size: 14px; color: grey;">
+    		<i>How did we come up with these choices? <br><br>We hand picked a team of conservative and progressive experts on gun violence to come up with the options below.  These folks spend their lives studying this topic and we tasked them with coming up with practical solutions for you to choose from.  Our goal is to help make America better by giving you real choices and trusting your judgement as moral and upstanding Americans to lead the way by example.</i><br>
+    	</div>
+    </div>
+
+    <ul class="mb-5 question-list">
+      <li data-id="1">{{ issue.question1 }}</li>
+      <li data-id="2">{{ issue.question2 }}</li>
+      <li data-id="3">{{ issue.question3 }}</li>
+      <li data-id="4">{{ issue.question4 }}</li>
+      <li data-id="5">{{ issue.question5 }}</li>
+    </ul>
+    <div class="mb-4 mt-3" style="font-size: 14px; color: grey">
+      <i>Feel free to choose more than one option.  This is what we'll use to tell your congressman how you feel.</i>
+    </div>
+    <h5 class="mt-3 mb-3">All good... Ready to move on?</h5>
+    <div class="mb-4 mt-3" style="font-size: 14px; color: grey;">
+      <i>The next step is to find your representative so we can let him know how you voted.  We'll combine your vote with everyone else in your district.</i>
+    </div>
+
+    <div class="pb-5">
+      <button class="btn btn-default mr-2" id="question-confirm" style="width: 220px;">What's Next?</button>  
+      <!-- <a class="btn btn-info" style="width: 200px;">Spread the word.</a> -->
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" id="id-sec-address">
+  <div class="container sec-address d-none">
+    <h3 class="pt-5">Help Us Find Your Representative</h3>
+    <div class="mb-4 mt-3" style="font-size: 14px; color: grey">
+      <i>In the box below enter the address where you are registered (or will register) to vote so we get the right representative.  We don't use zip codes because many, many zip codes are split between districts.  Your neighbor across the street could have a different representative than you.</i>
+    </div>
+    <div class="form-group mt-3">
+      <label class="control-label col-sm-12 pb-2 pl-0" for="id_login1">Enter your home address below.</label>
+      <div class="row pb-4">
+        <div class="col-sm-10">
+          <input type="text" name="address" id="address" class="form-control">
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-info mr-2" id="address-confirm" style="width: 90px;">Go!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container sec-map d-none p-0" id="id-sec-map" style="font-size: 19px;">
+    <div class="pl-3 pb-3">
+      <h5 class="rep_name"></h5>
+    </div>
+    <div id="mapid" class="m-0"></div>
+    <div class="mb-4 mt-3" style="font-size: 14px; ">
+      <i>Did we get the address correct? If not let us know here.</i>
+    </div>
+    <h5 class="mt-5 mb-3">Ready to let your rep know?</h5>
+    <div class="pb-5">
+      <button class="btn btn-info mr-2" id="show-chart" style="width: 200px;">Count My Vote!</button>
+      <!-- <button class="btn btn-default" style="width: 100px;">NO</button> -->
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" id="id-sec-chart">
+  <div class="container sec-chart d-none p-0" id="id-sec-chart">
+    <h3 class="pt-5 mb-5">How Your District Voted</h3>
+    <div id="chart" style="min-width: 310px; height: 500px; margin: 0 auto"></div>
+    <h5 class="mt-5 mb-3">Please share this with everyone you know and love.</h5>
+    <div class="pb-5">
+      <a href="#" class="fa fa-facebook"></a>
+      <a href="#" class="fa fa-twitter"></a>
+      <a href="#" class="fa fa-instagram"></a>
+      <!-- <button class="btn btn-default" style="width: 100px;">NO</button> -->
+    </div>
+    <form onsubmit="return saveEmail()">
+      <div class="form-group mt-3 pb-5">
+        <label class="control-label col-sm-12 pb-2 pl-0" for="id_login1">Interested in voting in the next issue?</label>
+        <div class="row pb-4">
+          {% csrf_token %}
+          <div class="col-sm-8">
+            <input type="email" name="email" id="email" class="form-control" required="" placeholder="Enter your email address.">
+          </div>
+          <div class="col-sm-2">
+            <button class="btn btn-info mr-2" id="save-email" style="width: 90px;">Go!</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>  
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfqKLaWJAKqyezsQKrZbsfCuzTLfgDkL0&libraries=places"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script type="text/javascript" src="/static/js/voting.js"></script>
+
+{% endblock %}

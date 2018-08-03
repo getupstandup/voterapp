@@ -52,6 +52,14 @@
   </div>
 </div>
 
+<div class="container-fluid">
+  <div class="container">
+    <div style="min-width: 310px; height: 500px; margin: 0 auto">
+      <canvas id="chart-area"></canvas>
+    </div>    
+  </div>
+</div>
+
 <div class="container-fluid" id="id-sec-address">
   <div class="container sec-address d-none">
     <h3 class="pt-5">Help Us Find Your Representative</h3>
@@ -119,6 +127,7 @@
 {% block script %}
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfqKLaWJAKqyezsQKrZbsfCuzTLfgDkL0&libraries=places"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script type="text/javascript" src="/static/js/Chart.bundle.min.js"></script>
+<script type="text/javascript" src="/static/js/utils.js"></script>
 <script type="text/javascript" src="/static/js/voting.js"></script>
-
 {% endblock %}

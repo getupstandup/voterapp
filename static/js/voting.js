@@ -86,7 +86,7 @@ $(function() {
               color(chartColors.red).alpha(0.5).rgbString(),
               color(chartColors.orange).alpha(0.5).rgbString(),
               color(chartColors.yellow).alpha(0.5).rgbString(),
-              color(chartColors.green).alpha(0.5).rgbString(),
+              color(chartColors.purple).alpha(0.5).rgbString(),
               color(chartColors.blue).alpha(0.5).rgbString(),
             ],
             label: 'My dataset' // for legend
@@ -123,53 +123,6 @@ $(function() {
 
       var ctx = document.getElementById('chart-area');
       Chart.PolarArea(ctx, config);
-
-      // Highcharts.chart('chart', {
-      //   chart: {
-      //     type: 'column'
-      //   },
-      //   title: {
-      //     text: 'This is how the voters in you district voted.'
-      //   },
-      //   subtitle: {
-      //     text: 'Total vote count: '+data.count
-      //   },
-      //   xAxis: {
-      //     categories: [
-      //       'Option A',
-      //       'Option B',
-      //       'Option C',
-      //       'Option D',
-      //       'Option E'
-      //     ],
-      //     crosshair: true
-      //   },
-      //   yAxis: {
-      //     min: 0,
-      //     title: {
-      //       text: 'In Favor'
-      //     }
-      //   },
-      //   tooltip: {
-      //     headerFormat: '<span style="font-size:12px">{point.key}</span><table>',
-      //     pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}:&nbsp;&nbsp;</td>' +
-      //         '<td style="padding:0"><b>{point.y}</b></td></tr>',
-      //     footerFormat: '</table>',
-      //     shared: true,
-      //     useHTML: true
-      //   },
-      //   plotOptions: {
-      //     column: {
-      //       pointPadding: 0.2,
-      //       borderWidth: 0
-      //     }
-      //   },
-      //   series: [{
-      //     name: 'In Favor of:',
-      //     data: data.selected,
-      //     color: 'blue'
-      //   }]
-      // });
     })
   })
 })

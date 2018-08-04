@@ -113,3 +113,9 @@
   margin-bottom: 100px;
   /*background-color: #39CCCC;*/
 }
+
+body {
+  background: #F0F2F0;
+  background: -webkit-linear-gradient(to bottom, #000C40, #F0F2F0); 
+  background: linear-gradient(to bottom, #000C40, #F0F2F0); 
+}

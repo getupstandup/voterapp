@@ -3,14 +3,14 @@
 {% block content %}
 <div class="container-fluid">
   <div class="container">
-    <h3 class="mt-5">A Letter to Congress... </h3>
-    <h4 class="mt-5">Listen Up Politicians,</h4>
+    <h3 class="mt-5">A Letter to America... </h3>
+    <!-- <h4 class="mt-5">Listen Up Politicians,</h4> -->
     <div style="font-size: 18px;" class="mb-4">
-      We think politicians should listen more and speak less!
+      When Americans pay attention politicians listen!
       <br><br>
-      We're tired of you doing whatever you want in Congress.  We the people are not cool with how you're running this country.
+      Members of congress have been enriching themselves at the expense of the American people for far too long.  They give us bad candidate and bad options.  They dictate the conversation and we are left holding the bag.
       <br>
-      <br><strong>This country belongs to us and we are taking back control.</strong>
+      <br><strong>This country belongs to the people and we are taking back control.</strong>
       <br><br>
       A wise man once said, "...that government of the people, by the people, for the people, shall not perish from the earth."
       <br><br>
@@ -21,12 +21,14 @@
 
 <div class="container-fluid" id="id-sec-issue">
   <div class="container">
-    <h3 class="mt-5 pt-4">What Can We Do To Turn Things Around</h3>
+    <h3 class="mt-5 pt-4">What We're Voting On!</h3>
+    <p>Instead of congress deciding what we vote on and the options we choose between we will decide here what is most important to us as American Citizens.
     <h4 class="mt-5">{{ issue.title }}</h4>
     <div class="mb-4 mt-3"> 
     	{{ issue.description }} <br>
     	<div class="mb-4 mt-3" style="font-size: 14px; color: grey;">
-    		<i>How did we come up with these choices? <br><br>We hand picked a team of conservative and progressive experts on gun violence to come up with the options below.  These folks spend their lives studying this topic and we tasked them with coming up with practical solutions for you to choose from.  Our goal is to help make America better by giving you real choices and trusting your judgement as moral and upstanding Americans to lead the way by example.</i><br>
+        <i>Feel free to choose more than one option.  This is what we'll use to tell your congressman how you feel.</i>
+    		<a href="">Curious how we came up with these choices?</a>
     	</div>
     </div>
 
@@ -37,16 +39,12 @@
       <li data-id="4">{{ issue.question4 }}</li>
       <li data-id="5">{{ issue.question5 }}</li>
     </ul>
-    <div class="mb-4 mt-3" style="font-size: 14px; color: grey">
-      <i>Feel free to choose more than one option.  This is what we'll use to tell your congressman how you feel.</i>
-    </div>
-    <h5 class="mt-3 mb-3">All good... Ready to move on?</h5>
+    <h5 class="mt-3 mb-3">Let's find your representative.</h5>
     <div class="mb-4 mt-3" style="font-size: 14px; color: grey;">
-      <i>The next step is to find your representative so we can let him know how you voted.  We'll combine your vote with everyone else in your district.</i>
+      <i>Help us find your representative to let them know how you feel.</i>
     </div>
-
     <div class="pb-5">
-      <button class="btn btn-default mr-2" id="question-confirm" style="width: 220px;">What's Next?</button>  
+      <button class="btn btn-info mr-2" id="question-confirm" style="width: 220px;">Ok</button>  
       <!-- <a class="btn btn-info" style="width: 200px;">Spread the word.</a> -->
     </div>
   </div>
@@ -56,10 +54,13 @@
   <div class="container sec-address d-none">
     <h3 class="pt-5">Help Us Find Your Representative</h3>
     <div class="mb-4 mt-3" style="font-size: 14px; color: grey">
-      <i>In the box below enter the address where you are registered (or will register) to vote so we get the right representative.  We don't use zip codes because many, many zip codes are split between districts.  Your neighbor across the street could have a different representative than you.</i>
+      <i>Please enter the address where you are registered to vote.  This will allow us to identify your representative.</i>
+      <a href="">Why do we need your full address.</a>
     </div>
     <div class="form-group mt-3">
-      <label class="control-label col-sm-12 pb-2 pl-0" for="id_login1">Enter your home address below.</label>
+      <!--
+        <label class="control-label col-sm-12 pb-2 pl-0" for="id_login1">Enter your home address below.</label>
+      -->
       <div class="row pb-4">
         <div class="col-sm-10">
           <input type="text" name="address" id="address" class="form-control">
@@ -77,11 +78,11 @@
     </div>
     <div id="mapid" class="m-0"></div>
     <div class="mb-4 mt-3" style="font-size: 14px; ">
-      <i>Did we get the address correct? If not let us know here.</i>
+      <i>Did we get the address correct?</i> <a href="">If not let us know here.</a>
     </div>
-    <h5 class="mt-5 mb-3">Ready to let your rep know?</h5>
+    <!-- <h5 class="mt-5 mb-3">Ready to let your rep know?</h5> -->
     <div class="pb-5">
-      <button class="btn btn-info mr-2" id="show-chart" style="width: 200px;">Count My Vote!</button>
+      <button class="btn btn-info mr-2" id="show-chart" style="width: 200px;">Tally My Vote!</button>
       <!-- <button class="btn btn-default" style="width: 100px;">NO</button> -->
     </div>
   </div>
@@ -89,11 +90,14 @@
 
 <div class="container-fluid" id="id-sec-chart">
   <div class="container sec-chart d-none p-0" id="id-sec-chart">
-    <h3 class="pt-5 mb-5">How Your District Voted</h3>
+    <h3 class="pt-5 mb-5">Your District</h3>
+    <p> This chart depicts how others in your district voted. We will use this to hold your representative acountable to the wishes of his or her constituents.  Congress has been doing what they want for far too long and now it is our turn to dictate the future of this country! </p>
     <div id="chart1" style="margin: 0 auto">
       <canvas id="chart-area"></canvas>
     </div>
-    <h5 class="mt-5 mb-3">Please share this with everyone you know and love.</h5>
+    
+    <h5 class="mt-5 mb-3">Help us spread the word.</h5>
+    <p>Let everyone you know about what we're trying to do.  If you're tired of all the nonsense then lets finally do something about it.
     <div class="pb-5">
       <a href="#" class="fa fa-facebook"></a>
       <a href="#" class="fa fa-twitter"></a>

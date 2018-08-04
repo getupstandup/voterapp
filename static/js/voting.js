@@ -91,26 +91,35 @@ $(function() {
             ],
             label: 'My dataset' // for legend
           }],
-          labels: [
-            'Option A',
-            'Option B',
-            'Option C',
-            'Option D',
-            'Option E'
-          ]
+          labels: data.labels
         },
         options: {
+          tooltips: {
+            callbacks: {
+              label: function(tooltipItem, data) {
+                return data.labels[tooltipItem.index]+': '+tooltipItem.yLabel+'%';
+              }
+            }
+          },
           responsive: true,
           legend: {
-            position: 'right',
+            position: 'bottom',
+            labels: {
+              padding: 20
+            }
           },
           title: {
             display: true,
+            fontSize: 16,
+            padding: 20,
             text: 'This is how the voters in you district voted.'
           },
           scale: {
             ticks: {
-              beginAtZero: true
+              beginAtZero: true,
+              callback: function (ax) {
+                return ax + '%';
+              }
             },
             reverse: false
           },
@@ -122,6 +131,9 @@ $(function() {
       };
 
       var ctx = document.getElementById('chart-area');
+      if ($(window).width() < 768) {
+        ctx.height = 300;
+      }
       Chart.PolarArea(ctx, config);
     })
   })

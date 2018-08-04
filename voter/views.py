@@ -127,15 +127,23 @@ def address_confirm(request):
 @csrf_exempt
 def chart_data(request):
     count = VoterResponse.objects.all().count()
+    issue = Issue.objects.first()
 
     result = {
         'count': count,
-        'selected': [0, 0, 0, 0, 0]
+        'selected': [0, 0, 0, 0, 0],
+        'labels': [
+            issue.question1,
+            issue.question2,
+            issue.question3,
+            issue.question4,
+            issue.question5
+        ]
     }
     
     for ii in VoterResponse.objects.all():
         qs = ii.questions.split(',')
-        for jj in range(6):
+        for jj in range(1, 6):
             result['selected'][jj-1] += qs.count(str(jj))
 
     for jj in range(5):

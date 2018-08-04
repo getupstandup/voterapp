@@ -138,6 +138,9 @@ def chart_data(request):
         for jj in range(6):
             result['selected'][jj-1] += qs.count(str(jj))
 
+    for jj in range(5):
+        result['selected'][jj] = result['selected'][jj] * 100 // count
+
     return JsonResponse(result, safe=True)
 
 @csrf_exempt
